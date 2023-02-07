@@ -1,4 +1,5 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,7 +13,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import BtnGitHub from "../BtnGithub/BtnGitHub";
+import BtnGitHub from "../../components/BtnGithub/BtnGitHub";
+import "../../template/link/style.css";
 
 function Copyright(props) {
   return (
@@ -130,9 +132,9 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2">
+                <NavLink className="link" to="signin">
                   Already have an account? Sign in
-                </Link>
+                </NavLink>
               </Grid>
             </Grid>
           </Box>
