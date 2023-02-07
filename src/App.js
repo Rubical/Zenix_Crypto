@@ -1,5 +1,7 @@
+import SearchUser from "./components/SearchUser/SearchUser";
+
 function App() {
-  return <h1>Hello</h1>;
+  return <SearchUser />;
 }
 
 export default App;
