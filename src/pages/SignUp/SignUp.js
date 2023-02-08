@@ -13,7 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import BtnGitHub from "../../components/BtnGithub/BtnGitHub";
+import BtnGitHub from "../../components/BtnGitHub/BtnGitHub";
 import "../../template/link/style.css";
 
 function Copyright(props) {
