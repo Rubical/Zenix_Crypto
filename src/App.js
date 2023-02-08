@@ -1,9 +1,4 @@
-// import SearchUser from "./components/SearchUser/SearchUser";
-
-// function App() {
-//   return <SearchUser />;
-// }
-
+import SearchUser from "./components/SearchUser/SearchUser";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
@@ -11,9 +6,10 @@ import SignIn from "./pages/SignIn/SignIn";
 function App() {
   return (
     <Router>
+      <SearchUser />
       <Routes>
-        <Route path="/" element={<SignUp />} />
-        <Route path="signin" element={<SignIn />} />
+        {/* <Route path="/" element={<SignUp />} />
+        <Route path="signin" element={<SignIn />} /> */}
       </Routes>
     </Router>
   );
