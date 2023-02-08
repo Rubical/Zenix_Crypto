@@ -19,4 +19,4 @@ import SignIn from "./pages/SignIn/SignIn";
 //   );
 // }
 
-// export default App;
+export default App;
