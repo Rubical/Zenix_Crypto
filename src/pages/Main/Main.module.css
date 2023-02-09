@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,7 +7,8 @@
   background-color: #467bad36;
 }
 
-img {
-  width: 200px;
+.githubIcon {
+  width: 150px;
+  margin-top: 50px;
   margin-bottom: 50px;
 }
