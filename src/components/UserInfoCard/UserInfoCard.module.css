@@ -12,6 +12,12 @@
   font-size: 17px;
 }
 
+.flexRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 hr {
   height: 1px;
   background-color: rgb(135, 135, 135);
@@ -78,7 +84,8 @@ hr {
 }
 
 .userImg {
-  max-width: 100%;
+  max-width: 350px;
+  max-height: 350px;
   justify-self: center;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -88,6 +95,12 @@ hr {
   margin-bottom: 12px;
 }
 
-.btnGitHub {
-  justify-self: flex-start;
+.iconShareBtn {
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+.iconShareBtnImg {
+  width: 40px;
+  height: 40px;
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import SearchUserInput from "../SearchUserInput/SearchUserInput";
 import UserInfoCard from "../UserInfoCard/UserInfoCard";
 
@@ -25,6 +26,10 @@ const SearchUser = () => {
     setUserInfo("");
   };
 
+  const clearInput = () => {
+    setSearchName("");
+  };
+
   return (
     <>
       <SearchUserInput
@@ -33,7 +38,13 @@ const SearchUser = () => {
         setSearchName={setSearchName}
         userInfo={userInfo}
       />
-      <UserInfoCard deleteUserCard={deleteUserCard} userInfo={userInfo} />
+
+      <UserInfoCard
+        clearInput={clearInput}
+        searchName={searchName}
+        deleteUserCard={deleteUserCard}
+        userInfo={userInfo}
+      />
     </>
   );
 };
