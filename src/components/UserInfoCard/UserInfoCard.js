@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import getPrettyDate from "../../utils/getPrettyDate";
 import BtnGitHubSignIn from "./../BtnGitHubSignIn/BtnGitHubSignIn";
 import deleteBtn from "./../../utils/close-btn.png";
-import iconShare from "./../../utils/icon-share.png";
 import cl from "./UserInfoCard.module.css";
 import ShareInSocials from "../ShareInSocials/ShareInSocials";
+import DialogSelect from "../ShareInSocials/ShareInSocials";
 
 const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
   useEffect(() => {
@@ -61,10 +61,7 @@ const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
             text={"Check profile"}
             link={html_url}
           />
-          {/* <button className={cl.iconShareBtn}>
-            <img src={iconShare} className={cl.iconShareBtnImg}></img>
-          </button> */}
-          <ShareInSocials description={"I wand to share!"} />
+          <ShareInSocials description={"Hello from Rubical!"} />
         </div>
       </div>
     );
