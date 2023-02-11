@@ -4,6 +4,7 @@ import BtnGitHubSignIn from "./../BtnGitHubSignIn/BtnGitHubSignIn";
 import deleteBtn from "./../../utils/close-btn.png";
 import iconShare from "./../../utils/icon-share.png";
 import cl from "./UserInfoCard.module.css";
+import ShareInSocials from "../ShareInSocials/ShareInSocials";
 
 const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
   useEffect(() => {
@@ -60,9 +61,10 @@ const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
             text={"Check profile"}
             link={html_url}
           />
-          <button className={cl.iconShareBtn}>
+          {/* <button className={cl.iconShareBtn}>
             <img src={iconShare} className={cl.iconShareBtnImg}></img>
-          </button>
+          </button> */}
+          <ShareInSocials description={"I wand to share!"} />
         </div>
       </div>
     );

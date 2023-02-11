@@ -16,7 +16,6 @@ const SearchUser = () => {
     if (response.ok) {
       const data = await response.json();
       setUserInfo(data);
-      console.log(data);
     } else {
       alert("User not found");
     }
