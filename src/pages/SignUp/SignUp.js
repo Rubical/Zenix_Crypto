@@ -48,7 +48,17 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -56,6 +66,7 @@ export default function SignUp() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -139,7 +150,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <BtnGitHub />
+        <BtnGitHub text={"Sign in with GitHub"} />
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>

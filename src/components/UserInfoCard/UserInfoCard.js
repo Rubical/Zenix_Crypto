@@ -65,8 +65,6 @@ const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
         </div>
       </div>
     );
-  } else {
-    return <></>;
   }
 };
 

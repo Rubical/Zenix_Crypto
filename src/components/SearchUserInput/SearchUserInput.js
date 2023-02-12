@@ -11,10 +11,6 @@ export default function SearchUserInput({
   searchName,
   userInfo,
 }) {
-  const searchNameHandler = (e) => {
-    setSearchName(e.target.value);
-  };
-
   if (userInfo) {
     return <></>;
   } else {
@@ -34,7 +30,7 @@ export default function SearchUserInput({
           <InputBase
             className={cl.input}
             value={searchName}
-            onChange={(e) => searchNameHandler(e)}
+            onChange={(e) => setSearchName(e.target.value)}
             sx={{ ml: 1, flex: 1 }}
             placeholder="Search user"
             inputProps={{ "aria-label": "search google maps" }}
