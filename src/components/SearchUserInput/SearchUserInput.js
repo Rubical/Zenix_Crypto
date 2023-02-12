@@ -20,7 +20,6 @@ export default function SearchUserInput({
   } else {
     return (
       <>
-        <h1>Cyka</h1>
         <Paper
           className={cl.form}
           onSubmit={sendForm}
