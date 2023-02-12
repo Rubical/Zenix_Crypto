@@ -11,4 +11,5 @@
   width: 150px;
   margin-top: 50px;
   margin-bottom: 50px;
+  pointer-events: none;
 }

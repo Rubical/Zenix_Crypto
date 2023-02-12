@@ -5,7 +5,7 @@ import cl from "./Main.module.css";
 
 const Main = () => {
   return (
-    <div className={cl.container} id="particle-canvas">
+    <div className={cl.container}>
       <img className={cl.githubIcon} src={gitHubIcon}></img>
       <SearchUser />
     </div>
