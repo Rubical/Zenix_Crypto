@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+}
+
+.form {
+  background-color: rgba(179, 179, 179, 0.543);
+}
+
+.input {
+  color: black;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.75;
+}
