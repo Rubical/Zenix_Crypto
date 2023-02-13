@@ -1,31 +1,31 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import NewsCard from "./../../components/NewsCard/NewsCard";
 import cl from "./News.module.css";
 
 const News = () => {
-  const [news, setNews] = useState(null);
+  const [news, setNews] = useState("");
 
-  const getNews = async () => {
-    const response = await fetch(
-      "https://newsapi.org/v2/everything?q=software&from=2023-02-10&sortBy=publishedAt&apiKey=ba4d6c5338394be997a79771d2522499&language=en&pageSize=50&searchin=description"
-    );
-    try {
+  useEffect(() => {
+    const getNews = async () => {
+      const response = await fetch(
+        "https://newsapi.org/v2/everything?q=software&apiKey=ba4d6c5338394be997a79771d2522499"
+      );
+
       if (response.ok) {
         const data = await response.json();
         setNews(data.articles);
-        console.log(news);
       }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+    };
 
-  getNews();
+    getNews();
+  }, []);
+
   if (news) {
     return (
       <div className={cl.container}>
-        {news.map((item) => {
-          return <NewsCard news={item} />;
+        {news.map((item, index) => {
+          return <NewsCard key={index} news={item} />;
         })}
       </div>
     );

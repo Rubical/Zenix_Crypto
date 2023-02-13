@@ -13,8 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { green } from "@mui/material/colors";
-
+import cl from "./NavBar.module.css";
 const pages = ["Search a user", "News"];
 const settings = ["Profile", "Logout"];
 
@@ -125,7 +124,10 @@ function NavBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <NavLink to={page.toLowerCase().replace(/ /g, "-")}>
+                <NavLink
+                  className={cl.link}
+                  to={page.toLowerCase().replace(/ /g, "-")}
+                >
                   {page}
                 </NavLink>
               </Button>
@@ -156,7 +158,9 @@ function NavBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <NavLink to="profile">
+                    <Typography textAlign="center">{setting}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
