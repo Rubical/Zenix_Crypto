@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function TextInput() {
+export default function TextInput({ value, onChange }) {
   return (
     <Box
       sx={{
@@ -10,7 +10,13 @@ export default function TextInput() {
         maxWidth: "100%",
       }}
     >
-      <TextField fullWidth label="Search" id="fullWidth" />
+      <TextField
+        fullWidth
+        label="Search"
+        id="fullWidth"
+        value={value}
+        onChange={onChange}
+      />
     </Box>
   );
 }

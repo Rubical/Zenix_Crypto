@@ -4,10 +4,30 @@ import BasicSelect from "../../components/UI/select/Select";
 import TextInput from "../../components/UI/input/TextInput";
 import NewsCard from "./../../components/NewsCard/NewsCard";
 import cl from "./News.module.css";
+import { useMemo } from "react";
 
 const News = () => {
   const [news, setNews] = useState("");
   const [selectedSort, setSelectedSort] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const sortedNews = useMemo(() => {
+    if (selectedSort) {
+      return [...news].sort((a, b) =>
+        a[selectedSort].localeCompare(b[selectedSort])
+      );
+    }
+    return news;
+  }, [selectedSort, news]);
+
+  const sortedAndSearchedNews = useMemo(() => {
+    if (sortedNews) {
+      return sortedNews.filter((news) =>
+        news.title.toLowerCase().includes(searchQuery)
+      );
+    }
+    return news;
+  }, [searchQuery, sortedNews]);
 
   useEffect(() => {
     const getNews = async () => {
@@ -17,31 +37,38 @@ const News = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
 
         setNews(data.articles);
       }
-      console.log(news);
     };
 
     getNews();
   }, []);
 
+  const sortNews = (sort) => {
+    setSelectedSort(sort);
+  };
+
   if (news) {
     return (
       <div className={cl.containerCommon}>
         <div className={cl.sortContainer}>
-          <TextInput />
+          <TextInput
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <BasicSelect
+            value={selectedSort}
+            onChange={sortNews}
             defaultValue="Sort"
             options={[
               { value: "title", name: "By title" },
-              { value: "body", name: "By description" },
+              { value: "description", name: "By description" },
             ]}
           />
         </div>
         <div className={cl.container}>
-          {news.map((item, index) => {
+          {sortedAndSearchedNews.map((item, index) => {
             return <NewsCard key={index} news={item} />;
           })}
         </div>

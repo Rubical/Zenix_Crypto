@@ -10,9 +10,8 @@ export default function BasicSelect({
   value,
   onChange,
 }) {
-  console.log(options);
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl sx={{ m: 1, width: 150 }} size="small">
       <InputLabel id="demo-select-small">{defaultValue}</InputLabel>
       <Select
         value={value}

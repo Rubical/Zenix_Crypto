@@ -90,8 +90,8 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <NavLink to="search-a-user">
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <NavLink key={page} to="search-a-user">
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 </NavLink>
