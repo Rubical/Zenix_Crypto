@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
-import iconShare from "./../../utils/icon-share.png";
+import iconShare from "./icon-share.png";
 import cl from "./ShareInSocials.module.css";
 
 export default function ShareInSocials({ description }) {

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import getPrettyDate from "../../utils/getPrettyDate";
 import BtnGitHubSignIn from "./../BtnGitHubSignIn/BtnGitHubSignIn";
-import deleteBtn from "./../../utils/close-btn.png";
+import deleteBtn from "./close-btn.png";
 import cl from "./UserInfoCard.module.css";
 import ShareInSocials from "../ShareInSocials/ShareInSocials";
 import DialogSelect from "../ShareInSocials/ShareInSocials";

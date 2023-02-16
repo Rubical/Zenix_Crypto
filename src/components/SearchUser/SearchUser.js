@@ -10,7 +10,7 @@ const SearchUser = () => {
   const sendForm = async (e) => {
     e.preventDefault();
     const response = await fetch(`
-    https://newsapi.org/v2/everything?q=software&from=2023-02-10&sortBy=publishedAt&apiKey=ba4d6c5338394be997a79771d2522499&language=en&pageSize=50&searchin=description
+    https://api.github.com/users/${searchName}
     `);
 
     if (response.ok) {

@@ -1,0 +1,8 @@
+.sortContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 490px;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px 0 20px 0px;
+}
