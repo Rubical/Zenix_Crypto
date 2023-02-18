@@ -14,6 +14,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../../template/link/style.css";
+import BtnGitHub from "../../components/BtnGitHubSignIn/BtnGitHubSignIn";
+import { AuthContext } from "../../context/context";
 
 function Copyright(props) {
   return (
@@ -24,8 +26,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/Rubical">
+        Rubical
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -36,13 +38,12 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const { isAuth, setIsAuth } = React.useContext(AuthContext);
+
+  const login = (e) => {
+    e.preventDefault();
+    setIsAuth(true);
+    localStorage.setItem("auth", true);
   };
 
   return (
@@ -57,18 +58,13 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" onSubmit={login} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -93,6 +89,7 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+
             <Button
               type="submit"
               fullWidth
@@ -102,18 +99,10 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <NavLink className="link" to="/">
-                  {"Don't have an account? Sign Up"}
-                </NavLink>
-              </Grid>
+              <Grid item xs></Grid>
             </Grid>
           </Box>
+          <BtnGitHub text={"Sign in with GitHub"} />
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>

@@ -26,6 +26,7 @@
     "react-router-dom": "^6.8.1",
     "react-screen-capture": "^1.0.1",
     "react-scripts": "5.0.1",
+    "rn-glitch-effect": "^1.1.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },

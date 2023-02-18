@@ -5,7 +5,7 @@ import NewsFilter from "../../components/BtnGitHubSignIn/NewsFilter/NewsFilter";
 import Loader from "./../../components/UI/Loader/Loader";
 import { getPageCount, getPagesArray } from "../../utils/pages";
 import cl from "./News.module.css";
-import BasicPagination from "../../components/UI/button/PageButton";
+import BasicPagination from "../../components/UI/pagination/Pagination";
 
 const News = () => {
   const [news, setNews] = useState("");
@@ -21,6 +21,7 @@ const News = () => {
     );
 
     const data = await response.json();
+    console.log(data);
     setNews(data.articles);
     const totalCount = 96;
     setTotalPages(getPageCount(totalCount, limit));
@@ -66,7 +67,7 @@ const News = () => {
         <div className={cl.container}>
           {isNewsLoading ? (
             <Loader />
-          ) : sortedAndSearchedNews.length ? (
+          ) : sortedAndSearchedNews ? (
             sortedAndSearchedNews.map((item, index) => {
               return <NewsCard key={index} news={item} />;
             })

@@ -1,26 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import SignUp from "./pages/SignUp/SignUp";
-import SignIn from "./pages/SignIn/SignIn";
-import Main from "./pages/Main/Main";
-import NavBar from "./components/NavBar/NavBar";
-import News from "./pages/News/News";
-
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRouter from "./components/AppRouter";
 import "./reset.css";
-import Profile from "./pages/UserProfile/UserProfile";
+import { AuthContext } from "./context/context";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setIsAuth(true);
+    }
+    setIsLoading(false);
+  }, []);
+
   return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<SignUp />} />
-        <Route path="signin" element={<SignIn />} />
-        <Route path="search-a-user" element={<Main />} /> */
-        <Route path="news" element={<News />} /> */
-        <Route path="profile" element={<Profile />} /> */
-      </Routes>
-    </Router>
+    <AuthContext.Provider value={{ isAuth, setIsAuth, isLoading }}>
+      <Router>
+        <AppRouter />
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

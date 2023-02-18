@@ -14,12 +14,20 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import cl from "./NavBar.module.css";
-const pages = ["Search a user", "News"];
-const settings = ["Profile", "Logout"];
+import { useContext } from "react";
+import { AuthContext } from "../../../context/context";
+const pages = ["News", "Search a user"];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const { isAuth, setIsAuth } = useContext(AuthContext);
+
+  const logout = () => {
+    setIsAuth(false);
+    localStorage.removeItem("auth");
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -46,7 +54,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="search-a-user"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -156,13 +164,21 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <NavLink to="profile">
-                    <Typography textAlign="center">{setting}</Typography>
-                  </NavLink>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <NavLink to="profile">
+                  <Typography textAlign="center">Profile</Typography>
+                </NavLink>
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleCloseUserMenu();
+                  logout();
+                }}
+              >
+                <NavLink to="signin">
+                  <Typography textAlign="center">Logout</Typography>
+                </NavLink>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

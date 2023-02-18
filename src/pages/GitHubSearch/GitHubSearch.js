@@ -1,4 +1,3 @@
-import NavBar from "../../components/NavBar/NavBar";
 import SearchUser from "../../components/SearchUser/SearchUser";
 import gitHubIcon from "./github-icon.svg";
 

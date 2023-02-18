@@ -1,11 +1,15 @@
-const Pagination = () => {
-  return (
-    <div className={cl.pageBtnContainer}>
-      {pagesArray.map((p) => (
-        <PageButton changePage={changePage} key={p} page={p} />
-      ))}
-    </div>
-  );
-};
+import * as React from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
-export default Pagination;
+export default function BasicPagination({ totalPages, changePage }) {
+  return (
+    <Stack spacing={2}>
+      <Pagination
+        onChange={(e, num) => changePage(num)}
+        count={totalPages}
+        color="primary"
+      />
+    </Stack>
+  );
+}
