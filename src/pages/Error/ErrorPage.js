@@ -20,7 +20,7 @@ export default function Error() {
             <Typography variant="h6">
               The page you’re looking for doesn’t exist.
             </Typography>
-            <NavLink to="/">
+            <NavLink to="github-API">
               <Button sx={{ marginTop: "20px" }} variant="contained">
                 Back Home
               </Button>

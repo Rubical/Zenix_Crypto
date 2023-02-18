@@ -54,7 +54,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/github-API"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },

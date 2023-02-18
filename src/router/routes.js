@@ -11,7 +11,7 @@ export const privateRoutes = [
     element: ErrorPage,
   },
   {
-    path: "/",
+    path: "/github-API",
     element: About,
   },
   {
@@ -30,6 +30,10 @@ export const privateRoutes = [
 ];
 
 export const publicRoutes = [
+  {
+    path: "/github-API",
+    element: About,
+  },
   {
     path: "/error",
     element: ErrorPage,

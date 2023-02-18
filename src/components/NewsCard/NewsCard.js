@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import checkItem from "../../utils/checkItem";
 import altImg from "./default-img.jpg";
 
-export default function NewsCard({ news }) {
+export default function NewsCards({ news }) {
   const { description, title, url, urlToImage } = news;
 
   const checkImgOrNull = () => {

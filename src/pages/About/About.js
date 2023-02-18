@@ -1,10 +1,5 @@
-import React from "react";
-
-import { Glitch } from "rn-glitch-effect";
 const About = () => {
-  return <Glitch text={"GLITCH"} mainColor={"black"} shadowColor={"green"} />;
+  return <h1>Об этом сайте</h1>;
 };
-const styles = StyleSheet.create({
-  containerWithBg: { backgroundColor: "red", marginBottom: "5%" },
-});
+
 export default About;

@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 
-import NewsCard from "./../../components/NewsCard/NewsCard";
+import NewsList from "../../components/NewsList/NewsList";
 import NewsFilter from "../../components/BtnGitHubSignIn/NewsFilter/NewsFilter";
 import Loader from "./../../components/UI/Loader/Loader";
-import { getPageCount, getPagesArray } from "../../utils/pages";
+import { getPageCount } from "../../utils/pages";
 import cl from "./News.module.css";
 import BasicPagination from "../../components/UI/pagination/Pagination";
 
@@ -21,8 +21,7 @@ const News = () => {
     );
 
     const data = await response.json();
-    console.log(data);
-    setNews(data.articles);
+    setNews([...news, ...data.articles]);
     const totalCount = 96;
     setTotalPages(getPageCount(totalCount, limit));
     setIsNewsLoading(false);
@@ -31,16 +30,8 @@ const News = () => {
   useEffect(() => {
     setIsNewsLoading(true);
     getNews();
-  }, []);
-
-  useEffect(() => {
-    getNews();
-  }, [page]);
-
-  const changePage = (page) => {
-    setPage(page);
     window.scroll(0, 0);
-  };
+  }, [page]);
 
   const sortedNews = useMemo(() => {
     if (filter.sort) {
@@ -67,25 +58,13 @@ const News = () => {
         <div className={cl.container}>
           {isNewsLoading ? (
             <Loader />
-          ) : sortedAndSearchedNews ? (
-            sortedAndSearchedNews.map((item, index) => {
-              return <NewsCard key={index} news={item} />;
-            })
           ) : (
-            <h1
-              style={{
-                textAlign: "center",
-                marginTop: 100,
-                fontSize: 50,
-                color: "black",
-              }}
-            >
-              News not found!
-            </h1>
+            <NewsList news={sortedAndSearchedNews} />
           )}
         </div>
+
         <div className={cl.pageBtnContainer}>
-          <BasicPagination changePage={changePage} totalPages={totalPages} />
+          <BasicPagination setPage={setPage} totalPages={totalPages} />
         </div>
       </div>
     );
