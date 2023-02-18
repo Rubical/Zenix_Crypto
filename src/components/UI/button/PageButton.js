@@ -1,26 +1,15 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
-export default function PageButton({ page, changePage, color }) {
+export default function BasicPagination({ totalPages, changePage }) {
   return (
-    <Box
-      onClick={() => {
-        changePage(page);
-      }}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: { color },
-        "& > *": {
-          m: 1,
-        },
-      }}
-    >
-      <ButtonGroup size="small" aria-label="small button group">
-        <Button>{page}</Button>
-      </ButtonGroup>
-    </Box>
+    <Stack spacing={2}>
+      <Pagination
+        onChange={(e, num) => changePage(num)}
+        count={totalPages}
+        color="primary"
+      />
+    </Stack>
   );
 }

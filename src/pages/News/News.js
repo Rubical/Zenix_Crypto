@@ -5,7 +5,7 @@ import NewsFilter from "../../components/BtnGitHubSignIn/NewsFilter/NewsFilter";
 import Loader from "./../../components/UI/Loader/Loader";
 import { getPageCount, getPagesArray } from "../../utils/pages";
 import cl from "./News.module.css";
-import PageButton from "../../components/UI/button/PageButton";
+import BasicPagination from "../../components/UI/button/PageButton";
 
 const News = () => {
   const [news, setNews] = useState("");
@@ -22,7 +22,7 @@ const News = () => {
 
     const data = await response.json();
     setNews(data.articles);
-    const totalCount = 100;
+    const totalCount = 96;
     setTotalPages(getPageCount(totalCount, limit));
     setIsNewsLoading(false);
   };
@@ -38,9 +38,8 @@ const News = () => {
 
   const changePage = (page) => {
     setPage(page);
+    window.scroll(0, 0);
   };
-
-  let pagesArray = getPagesArray(totalPages);
 
   const sortedNews = useMemo(() => {
     if (filter.sort) {
@@ -85,9 +84,7 @@ const News = () => {
           )}
         </div>
         <div className={cl.pageBtnContainer}>
-          {pagesArray.map((p) => (
-            <PageButton changePage={changePage} key={p} page={p} />
-          ))}
+          <BasicPagination changePage={changePage} totalPages={totalPages} />
         </div>
       </div>
     );

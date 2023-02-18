@@ -90,7 +90,7 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <NavLink key={page} to="search-a-user">
+                <NavLink key={page} to={page.toLowerCase().replace(/ /g, "-")}>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
