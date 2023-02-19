@@ -2,8 +2,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import "./reset.css";
 import { AuthContext } from "./context/context";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);

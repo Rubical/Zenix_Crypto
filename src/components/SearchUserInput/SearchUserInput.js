@@ -21,6 +21,7 @@ export default function SearchUserInput({
           onSubmit={sendForm}
           component="form"
           sx={{
+            backgroundColor: "#e2e2e276	",
             p: "2px 4px",
             display: "flex",
             alignItems: "center",
@@ -31,8 +32,8 @@ export default function SearchUserInput({
             className={cl.input}
             value={searchName}
             onChange={(e) => setSearchName(e.target.value)}
-            sx={{ ml: 1, flex: 1 }}
-            placeholder="Search user"
+            sx={{ ml: 1, flex: 1, color: "black" }}
+            placeholder="Enter GitHub username"
             inputProps={{ "aria-label": "search google maps" }}
           />
           <SearchUserButton />

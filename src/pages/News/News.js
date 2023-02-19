@@ -21,7 +21,7 @@ const News = () => {
     );
 
     const data = await response.json();
-    setNews([...news, ...data.articles]);
+    setNews(data.articles);
     const totalCount = 96;
     setTotalPages(getPageCount(totalCount, limit));
     setIsNewsLoading(false);

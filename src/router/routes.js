@@ -10,10 +10,7 @@ export const privateRoutes = [
     path: "/*",
     element: ErrorPage,
   },
-  {
-    path: "/github-API",
-    element: About,
-  },
+
   {
     path: "/news",
     element: News,

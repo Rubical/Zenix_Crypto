@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import cl from "./NavBar.module.css";
+import cl from "./NavBarPrivate.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/context";
 const pages = ["News", "Search a user"];
@@ -54,7 +54,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/github-API"
+            href="/news"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -97,13 +97,16 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <NavLink key={page} to={page.toLowerCase().replace(/ /g, "-")}>
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                </NavLink>
-              ))}
+              <NavLink to="/news">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">News</Typography>
+                </MenuItem>
+              </NavLink>
+              <NavLink to="/search-a-user">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Search a user</Typography>
+                </MenuItem>
+              </NavLink>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -123,23 +126,25 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Rubical
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <NavLink
-                  className={cl.link}
-                  to={page.toLowerCase().replace(/ /g, "-")}
-                >
-                  {page}
-                </NavLink>
-              </Button>
-            ))}
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <NavLink className={cl.link} to="news">
+                News
+              </NavLink>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <NavLink className={cl.link} to="search-a-user">
+                Search a user
+              </NavLink>
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -175,7 +180,7 @@ function NavBar() {
                   logout();
                 }}
               >
-                <NavLink to="signin">
+                <NavLink to="/signin">
                   <Typography textAlign="center">Logout</Typography>
                 </NavLink>
               </MenuItem>

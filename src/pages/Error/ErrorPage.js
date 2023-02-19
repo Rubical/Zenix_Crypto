@@ -1,41 +1,32 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Box, Button, Container, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Button, Typography } from "@mui/material";
 
 export default function Error() {
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        columnGap: "80px",
+        minHeight: "80vh",
+        flexWrap: "wrap",
+        padding: "20px",
       }}
     >
-      <Container maxWidth="md">
-        <Grid container spacing={2}>
-          <Grid xs={6}>
-            <Typography variant="h1">404</Typography>
-            <Typography variant="h6">
-              The page you’re looking for doesn’t exist.
-            </Typography>
-            <NavLink to="github-API">
-              <Button sx={{ marginTop: "20px" }} variant="contained">
-                Back Home
-              </Button>
-            </NavLink>
-          </Grid>
-          <Grid xs={6}>
-            <img
-              src="https://cdn.pixabay.com/photo/2017/03/09/12/31/error-2129569__340.jpg"
-              alt=""
-              width={500}
-              height={250}
-            />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+      <div>
+        <Typography variant="h1">404</Typography>
+        <Typography variant="h6">
+          The page you’re looking for doesn’t exist.
+        </Typography>
+      </div>
+      <img
+        src="https://cdn.pixabay.com/photo/2017/03/09/12/31/error-2129569__340.jpg"
+        alt=""
+        width={500}
+        height={250}
+      />
+    </div>
   );
 }

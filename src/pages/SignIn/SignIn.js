@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -38,12 +38,14 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const nav = useNavigate();
   const { isAuth, setIsAuth } = React.useContext(AuthContext);
 
   const login = (e) => {
     e.preventDefault();
     setIsAuth(true);
     localStorage.setItem("auth", true);
+    nav("/news");
   };
 
   return (
@@ -66,21 +68,20 @@ export default function SignIn() {
           </Typography>
           <Box component="form" onSubmit={login} noValidate sx={{ mt: 1 }}>
             <TextField
+              sx={{ color: "red" }}
               margin="normal"
-              required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Just click sign in with GitHub (it works)"
               name="email"
               autoComplete="email"
               autoFocus
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               name="password"
-              label="Password"
+              label="Or click sign in button, i didn't get into backend"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -89,7 +90,6 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-
             <Button
               type="submit"
               fullWidth
