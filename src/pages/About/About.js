@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const About = () => {
   return (
     <div className={cl.container}>
-      <video autoPlay muted loop className={cl.video}>
+      <video autoPlay playsinline muted loop className={cl.video}>
         <source src={backgroundVideo} type="video/mp4" />
       </video>
       <div className={cl.welcomeBlock}>
