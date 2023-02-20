@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import backgroundVideo from "./video.mp4";
 import cl from "./About.module.css";
 import { NavLink } from "react-router-dom";
@@ -7,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const About = () => {
   return (
     <div className={cl.container}>
-      <video autoPlay playsinline muted loop className={cl.video}>
+      <video autoPlay playsInline muted loop className={cl.video}>
         <source src={backgroundVideo} type="video/mp4" />
       </video>
       <div className={cl.welcomeBlock}>

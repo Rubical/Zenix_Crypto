@@ -24,8 +24,9 @@ const News = () => {
         },
       }
     );
-
     const data = await response.json();
+    console.log(data);
+
     setNews(data.articles);
     const totalCount = 96;
     setTotalPages(getPageCount(totalCount, limit));

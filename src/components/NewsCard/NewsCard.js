@@ -9,7 +9,7 @@ import checkItem from "../../utils/checkItem";
 import altImg from "./default-img.jpg";
 
 export default function NewsCards({ news }) {
-  const { excerpt, title, url, media } = news;
+  const { excerpt, title, link, media } = news;
 
   const checkImgOrNull = () => {
     const httpRegex =
@@ -40,7 +40,7 @@ export default function NewsCards({ news }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <a href={url}>
+        <a href={link}>
           <Button
             size="small"
             sx={{ position: "absolute", bottom: "10px", left: "10px" }}
