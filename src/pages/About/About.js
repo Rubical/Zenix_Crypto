@@ -6,17 +6,23 @@ import { NavLink } from "react-router-dom";
 const About = () => {
   return (
     <div className={cl.container}>
-      <div className={cl.video}>
-        <video autoPlay playsInline muted loop>
-          <source src={video} type="video/mp4" />
-        </video>
-      </div>
+      <video
+        className={cl.video}
+        preload="auto"
+        autoPlay
+        playsInline
+        muted
+        loop
+        src={video}
+        controls=""
+      />
       <div className={cl.welcomeBlock}>
         <h1 className={cl.welcomeText}>
           Welcome! <br />
           Click here to continue.
         </h1>
         <br />
+
         <NavLink to="/signin">
           <Button
             fullWidth
