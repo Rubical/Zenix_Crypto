@@ -17,7 +17,12 @@ const News = () => {
 
   const getNews = async () => {
     const response = await fetch(
-      `https://newsapi.org/v2/everything?q=software&pageSize=${limit}&page=${page}&apiKey=ba4d6c5338394be997a79771d2522499`
+      `https://api.newscatcherapi.com/v2/search?q=software&lang=en&page_size=${limit}&page=${page}`,
+      {
+        headers: {
+          "x-api-key": "vzKA9gv7wUhmasm-9WKjtWbT2nWwYNgCvKNzQPnDSlo",
+        },
+      }
     );
 
     const data = await response.json();

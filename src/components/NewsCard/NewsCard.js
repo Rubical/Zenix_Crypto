@@ -9,14 +9,14 @@ import checkItem from "../../utils/checkItem";
 import altImg from "./default-img.jpg";
 
 export default function NewsCards({ news }) {
-  const { description, title, url, urlToImage } = news;
+  const { excerpt, title, url, media } = news;
 
   const checkImgOrNull = () => {
     const httpRegex =
       /https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/g;
 
-    if (httpRegex.test(urlToImage)) {
-      return urlToImage;
+    if (httpRegex.test(media)) {
+      return media;
     } else {
       return altImg;
     }
@@ -36,7 +36,7 @@ export default function NewsCards({ news }) {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <span dangerouslySetInnerHTML={{ __html: description }} />
+          <span dangerouslySetInnerHTML={{ __html: excerpt }} />
         </Typography>
       </CardContent>
       <CardActions>
