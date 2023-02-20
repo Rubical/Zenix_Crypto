@@ -6,6 +6,7 @@ import Loader from "./../../components/UI/Loader/Loader";
 import { getPageCount } from "../../utils/pages";
 import cl from "./News.module.css";
 import BasicPagination from "../../components/UI/pagination/Pagination";
+import Error from "./../Error/ErrorPage";
 
 const News = () => {
   const [news, setNews] = useState("");
@@ -25,8 +26,6 @@ const News = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
-
     setNews(data.articles);
     const totalCount = 96;
     setTotalPages(getPageCount(totalCount, limit));
@@ -74,6 +73,8 @@ const News = () => {
         </div>
       </div>
     );
+  } else {
+    return <Error />;
   }
 };
 

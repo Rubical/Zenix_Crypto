@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import cl from "./ErrorPage.module.css";
 
 export default function Error() {
   return (
@@ -22,10 +22,9 @@ export default function Error() {
         </Typography>
       </div>
       <img
+        className={cl.imgError}
         src="https://cdn.pixabay.com/photo/2017/03/09/12/31/error-2129569__340.jpg"
         alt=""
-        width={500}
-        height={250}
       />
     </div>
   );

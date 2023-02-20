@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import backgroundVideo from "./video.mp4";
+import video from "./video.mp4";
 import cl from "./About.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const About = () => {
   return (
     <div className={cl.container}>
       <video autoPlay playsInline muted loop className={cl.video}>
-        <source src={backgroundVideo} type="video/mp4" />
+        <source src={video} type="video/mp4" />
       </video>
       <div className={cl.welcomeBlock}>
         <h1 className={cl.welcomeText}>
@@ -15,18 +15,11 @@ const About = () => {
           Click here to continue.
         </h1>
         <br />
-        <div className={cl.arrow}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
         <NavLink to="/signin">
           <Button
             fullWidth
             variant="contained"
             sx={{
-              mt: 25,
               mb: 2,
               maxWidth: 250,
             }}
