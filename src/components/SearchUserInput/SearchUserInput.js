@@ -26,7 +26,7 @@ export default function SearchUserInput({
             display: "flex",
             alignItems: "center",
             width: 400,
-            padding: "20px",
+            margin: "20px",
           }}
         >
           <InputBase

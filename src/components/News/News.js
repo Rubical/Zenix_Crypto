@@ -1,12 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
 
-import NewsList from "../../components/NewsList/NewsList";
-import NewsFilter from "../../components/BtnGitHubSignIn/NewsFilter/NewsFilter";
-import Loader from "./../../components/UI/Loader/Loader";
+import NewsList from "../NewsList/NewsList";
+import NewsFilter from "../BtnGitHubSignIn/NewsFilter/NewsFilter";
+import Loader from "../UI/Loader/Loader";
 import { getPageCount } from "../../utils/pages";
 import cl from "./News.module.css";
-import BasicPagination from "../../components/UI/pagination/Pagination";
-import Error from "./../Error/ErrorPage";
+import BasicPagination from "../UI/pagination/Pagination";
+import Error from "../../pages/Error/ErrorPage";
 
 const News = () => {
   const [news, setNews] = useState("");

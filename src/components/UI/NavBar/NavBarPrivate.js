@@ -16,7 +16,6 @@ import AdbIcon from "@mui/icons-material/Adb";
 import cl from "./NavBarPrivate.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/context";
-const pages = ["News", "Search a user"];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -54,7 +53,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/news"
+            href="/github-API"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -97,9 +96,9 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <NavLink to="/news">
+              <NavLink to="/github-API">
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">News</Typography>
+                  <Typography textAlign="center">Home</Typography>
                 </MenuItem>
               </NavLink>
               <NavLink to="/search-a-user">
@@ -133,8 +132,8 @@ function NavBar() {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              <NavLink className={cl.link} to="news">
-                News
+              <NavLink className={cl.link} to="/github-API">
+                Home
               </NavLink>
             </Button>
             <Button
