@@ -18,16 +18,13 @@ const News = () => {
 
   const getNews = async () => {
     const response = await fetch(
-      `https://api.newscatcherapi.com/v2/search?q=software&lang=en&page_size=${limit}&page=${page}`,
-      {
-        headers: {
-          "x-api-key": "vzKA9gv7wUhmasm-9WKjtWbT2nWwYNgCvKNzQPnDSlo",
-        },
-      }
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=software&page=${page}&api-key=j4ZiODq9JJvT86CJYwEdidgi0HDPUMRg`
     );
     const data = await response.json();
-    setNews(data.articles);
-    const totalCount = 96;
+    const newsReady = data.response.docs.slice(0, 9);
+    console.log(newsReady);
+    setNews(newsReady);
+    const totalCount = 1000;
     setTotalPages(getPageCount(totalCount, limit));
     setIsNewsLoading(false);
   };
@@ -50,7 +47,7 @@ const News = () => {
   const sortedAndSearchedNews = useMemo(() => {
     if (sortedNews) {
       return sortedNews.filter((news) =>
-        news.title.toLowerCase().includes(filter.query)
+        news.headline.main.toLowerCase().includes(filter.query)
       );
     }
     return news;
