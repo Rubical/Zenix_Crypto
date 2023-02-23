@@ -5,11 +5,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import checkItem from "../../utils/checkItem";
 import altImg from "./default-img.jpg";
 
 export default function NewsCards({ news }) {
-  const { headline, abstract, web_url, multimedia } = news;
+  const { snippet, lead_paragraph, web_url, multimedia } = news;
 
   const checkImgOrNull = () => {
     const httpRegex =
@@ -23,20 +22,20 @@ export default function NewsCards({ news }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, position: "relative", paddingBottom: "30px" }}>
+    <Card sx={{ width: 345, position: "relative", paddingBottom: "30px" }}>
       <CardMedia
         component="img"
-        alt={headline.main}
+        alt={snippet}
         height="140"
         src={checkImgOrNull()}
         referrerPolicy="no-referrer"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {headline.main}
+          {snippet}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <span dangerouslySetInnerHTML={{ __html: abstract }} />
+          <span dangerouslySetInnerHTML={{ __html: lead_paragraph }} />
         </Typography>
       </CardContent>
       <CardActions>

@@ -98,7 +98,7 @@ function NavBar() {
             >
               <NavLink to="/github-API">
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Home</Typography>
+                  <Typography textAlign="center">News</Typography>
                 </MenuItem>
               </NavLink>
               <NavLink to="/search-a-user">
@@ -133,7 +133,7 @@ function NavBar() {
               sx={{ my: 2, color: "white", display: "block" }}
             >
               <NavLink className={cl.link} to="/github-API">
-                Home
+                News
               </NavLink>
             </Button>
             <Button

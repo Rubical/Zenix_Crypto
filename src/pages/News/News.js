@@ -1,28 +1,39 @@
 import { useState, useEffect, useMemo } from "react";
 
-import NewsList from "../NewsList/NewsList";
-import NewsFilter from "../BtnGitHubSignIn/NewsFilter/NewsFilter";
-import Loader from "../UI/Loader/Loader";
+import NewsList from "../../components/NewsList/NewsList";
+import NewsFilter from "../../components/BtnGitHubSignIn/NewsFilter/NewsFilter";
+import Loader from "../../components/UI/Loader/Loader";
 import { getPageCount } from "../../utils/pages";
 import cl from "./News.module.css";
-import BasicPagination from "../UI/pagination/Pagination";
-import Error from "../../pages/Error/ErrorPage";
+import BasicPagination from "../../components/UI/pagination/Pagination";
+import Error from "../Error/ErrorPage";
+import Ticker from "../../components/Ticker/Ticker";
 
 const News = () => {
   const [news, setNews] = useState("");
+  const [cryptoInfo, setCryptoInfo] = useState("");
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(12);
+  const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const [isNewsLoading, setIsNewsLoading] = useState(false);
 
+  const getCryptoInfo = async () => {
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false
+      `
+    );
+    const data = await response.json();
+    console.log(data);
+    setCryptoInfo(data);
+  };
+
   const getNews = async () => {
     const response = await fetch(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=software&page=${page}&api-key=j4ZiODq9JJvT86CJYwEdidgi0HDPUMRg`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=crypto&page=${page}&api-key=j4ZiODq9JJvT86CJYwEdidgi0HDPUMRg`
     );
     const data = await response.json();
     const newsReady = data.response.docs.slice(0, 9);
-    console.log(newsReady);
     setNews(newsReady);
     const totalCount = 1000;
     setTotalPages(getPageCount(totalCount, limit));
@@ -31,6 +42,7 @@ const News = () => {
 
   useEffect(() => {
     setIsNewsLoading(true);
+    getCryptoInfo();
     getNews();
     window.scroll(0, 0);
   }, [page]);
@@ -56,6 +68,7 @@ const News = () => {
   if (news) {
     return (
       <div className={cl.containerCommon}>
+        <Ticker cryptoInfo={cryptoInfo} />
         <NewsFilter filter={filter} setFilter={setFilter} />
         <div className={cl.container}>
           {isNewsLoading ? (

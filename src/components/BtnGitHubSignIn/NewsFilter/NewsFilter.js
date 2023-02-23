@@ -16,8 +16,8 @@ const NewsFilter = ({ filter, setFilter }) => {
         }
         defaultValue="Sort"
         options={[
-          { value: "headline", name: "By title" },
-          { value: "excerpt", name: "By description" },
+          { value: "snippet", name: "By title" },
+          { value: "lead_paragraph", name: "By description" },
         ]}
       />
     </div>

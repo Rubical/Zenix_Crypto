@@ -1,0 +1,24 @@
+.cryptoImg {
+  width: 30px;
+  margin: 0 10px 0 30px;
+}
+
+.currentPrice {
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+
+.priceChange {
+  font-size: 8px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

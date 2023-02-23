@@ -77,7 +77,7 @@ function ResponsiveAppBar() {
             >
               <NavLink to="github-API">
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">About</Typography>
+                  <Typography textAlign="center">Home</Typography>
                 </MenuItem>
               </NavLink>
             </Menu>
@@ -107,7 +107,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                About
+                Home
               </Button>
             </NavLink>
           </Box>
