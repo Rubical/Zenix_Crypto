@@ -1,9 +1,9 @@
 import SearchUser from "../../components/SearchUser/SearchUser";
 import gitHubIcon from "./github-icon.svg";
 
-import cl from "./Main.module.css";
+import cl from "./GitHubHelper.module.css";
 
-const Main = () => {
+const GitHubHelper = () => {
   return (
     <>
       <div className={cl.container}>
@@ -14,4 +14,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default GitHubHelper;

@@ -21,11 +21,14 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth, signout } = useContext(AuthContext);
 
   const logout = () => {
-    setIsAuth(false);
-    localStorage.removeItem("auth");
+    if (isAuth) {
+      signout();
+    } else {
+      setIsAuth(false);
+    }
   };
 
   const handleOpenNavMenu = (event) => {
@@ -98,12 +101,12 @@ function NavBar() {
             >
               <NavLink to="/github-API">
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">News</Typography>
+                  <Typography textAlign="center">home</Typography>
                 </MenuItem>
               </NavLink>
-              <NavLink to="/search-a-user">
+              <NavLink to="/helper">
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Search a user</Typography>
+                  <Typography textAlign="center">GitHub helper</Typography>
                 </MenuItem>
               </NavLink>
             </Menu>
@@ -133,15 +136,15 @@ function NavBar() {
               sx={{ my: 2, color: "white", display: "block" }}
             >
               <NavLink className={cl.link} to="/github-API">
-                News
+                home
               </NavLink>
             </Button>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              <NavLink className={cl.link} to="search-a-user">
-                Search a user
+              <NavLink className={cl.link} to="/helper">
+                GitHub helper
               </NavLink>
             </Button>
           </Box>
@@ -149,7 +152,14 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src={
+                    isAuth
+                      ? isAuth.user.user_metadata.avatar_url
+                      : "/static/images/avatar/2.jpg"
+                  }
+                />
               </IconButton>
             </Tooltip>
             <Menu

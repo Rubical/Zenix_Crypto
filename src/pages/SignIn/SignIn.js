@@ -28,9 +28,8 @@ function Copyright(props) {
       {"Copyright © "}
       <Link color="inherit" href="https://github.com/Rubical">
         Rubical
-      </Link>{" "}
+      </Link>
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -45,7 +44,7 @@ export default function SignIn() {
     e.preventDefault();
     setIsAuth(true);
     localStorage.setItem("auth", true);
-    nav("/news");
+    nav("/github-API");
   };
 
   return (

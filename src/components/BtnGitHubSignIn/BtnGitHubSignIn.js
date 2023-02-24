@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/context";
 import cl from "./BtnGitHubSignIn.module.css";
 import gitHubIcon from "./gitHub-black.svg";
 
-const BtnGitHub = ({ link, text }) => {
+const BtnGitHub = ({ text }) => {
+  const { signInWithGitHub } = useContext(AuthContext);
+
   return (
-    <a href={link} target="_blank" rel="noreferrer" className={cl.btnGithub}>
+    <button className={cl.btnGithub} onClick={signInWithGitHub}>
       <img src={gitHubIcon} alt="" />
       {text}
-    </a>
+    </button>
   );
 };
 

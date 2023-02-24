@@ -1,5 +1,5 @@
-import BasicSelect from "../../UI/select/Select";
-import TextInput from "../../UI/input/TextInput";
+import BasicSelect from "../UI/select/Select";
+import TextInput from "../UI/input/TextInput";
 import cl from "./NewsFilter.module.css";
 
 const NewsFilter = ({ filter, setFilter }) => {

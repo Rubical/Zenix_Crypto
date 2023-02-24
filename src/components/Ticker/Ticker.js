@@ -1,8 +1,23 @@
+import { useState, useEffect } from "react";
 import Marquee from "react-double-marquee";
 import CryptoCard from "../CryptoCard/CryptoCard";
 
-const Ticker = ({ cryptoInfo }) => {
-  console.log(cryptoInfo);
+const Ticker = () => {
+  const [cryptoInfo, setCryptoInfo] = useState("");
+
+  const getCryptoInfo = async () => {
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false
+      `
+    );
+    const data = await response.json();
+    setCryptoInfo(data);
+  };
+
+  useEffect(() => {
+    getCryptoInfo();
+  }, []);
+
   return (
     <div
       style={{
@@ -19,7 +34,7 @@ const Ticker = ({ cryptoInfo }) => {
         }}
       >
         {cryptoInfo
-          ? cryptoInfo.map((el) => <CryptoCard cryptoInfo={el} id={el.id} />)
+          ? cryptoInfo.map((el) => <CryptoCard cryptoInfo={el} key={el.id} />)
           : null}
       </Marquee>
     </div>

@@ -1,8 +1,8 @@
 import SignIn from "./../pages/SignIn/SignIn";
 import ErrorPage from "./../pages/Error/ErrorPage";
 import Profile from "./../pages/UserProfile/UserProfile";
-import GitHubSearch from "./../pages/GitHubSearch/GitHubSearch";
-import News from "../pages/News/News";
+import GitHubHelper from "../pages/GitHubHelper/GitHubHelper";
+import Main from "../pages/Main/Main";
 
 export const privateRoutes = [
   {
@@ -12,11 +12,11 @@ export const privateRoutes = [
 
   {
     path: "/github-API",
-    element: News,
+    element: Main,
   },
   {
-    path: "/search-a-user",
-    element: GitHubSearch,
+    path: "/helper",
+    element: GitHubHelper,
   },
 
   {
@@ -28,7 +28,7 @@ export const privateRoutes = [
 export const publicRoutes = [
   {
     path: "/github-API",
-    element: News,
+    element: Main,
   },
   {
     path: "/*",

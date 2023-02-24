@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   MDBCol,
   MDBContainer,
@@ -16,8 +16,17 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
+import { AuthContext } from "../../context/context";
 
 export default function Profile() {
+  const { isAuth } = useContext(AuthContext);
+  const { created_at, email, phone, user_metadata } = isAuth.user;
+  const { avatar_url, full_name, user_name } = user_metadata;
+  console.log(isAuth);
+
+  const checkIsAuthItemExist = (authItem, defaultItem) => {
+    return isAuth ? authItem : defaultItem;
+  };
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5">
@@ -25,10 +34,7 @@ export default function Profile() {
           <MDBCol>
             <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
               <MDBBreadcrumbItem>
-                <a href="#">Home</a>
-              </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem>
-                <a href="#">User</a>
+                <a href="/github-API">Home</a>
               </MDBBreadcrumbItem>
               <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
             </MDBBreadcrumb>
@@ -40,20 +46,16 @@ export default function Profile() {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src={checkIsAuthItemExist(
+                    avatar_url,
+                    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  )}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: "150px" }}
                   fluid
                 />
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Follow</MDBBtn>
-                  <MDBBtn outline className="ms-1">
-                    Message
-                  </MDBBtn>
-                </div>
+                <p className="text-muted mb-1">Developer</p>
               </MDBCardBody>
             </MDBCard>
 
@@ -61,40 +63,12 @@ export default function Profile() {
               <MDBCardBody className="p-0">
                 <MDBListGroup flush className="rounded-3">
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>https://mdbootstrap.com</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon
                       fab
                       icon="github fa-lg"
                       style={{ color: "#333333" }}
                     />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="twitter fa-lg"
-                      style={{ color: "#55acee" }}
-                    />
-                    <MDBCardText>@mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="instagram fa-lg"
-                      style={{ color: "#ac2bac" }}
-                    />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="facebook fa-lg"
-                      style={{ color: "#3b5998" }}
-                    />
-                    <MDBCardText>mdbootstrap</MDBCardText>
+                    <MDBCardText>{user_name}</MDBCardText>
                   </MDBListGroupItem>
                 </MDBListGroup>
               </MDBCardBody>
@@ -109,7 +83,7 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      Johnatan Smith
+                      {checkIsAuthItemExist(full_name, "anonymous")}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -120,7 +94,7 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      example@example.com
+                      {checkIsAuthItemExist(email)}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -131,7 +105,7 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      (097) 234-5678
+                      {checkIsAuthItemExist(phone, "")}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -142,18 +116,7 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      (098) 765-4321
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      Bay Area, San Francisco, CA
+                      {checkIsAuthItemExist(phone, "")}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>

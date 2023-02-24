@@ -1,14 +1,11 @@
 .container {
+  max-width: 1155px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   column-gap: 60px;
   row-gap: 60px;
-
   flex-wrap: wrap;
-}
-
-.containerCommon {
-  padding: 50px 30px;
 }
 
 .pageBtnContainer {

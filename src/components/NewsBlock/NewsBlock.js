@@ -1,32 +1,19 @@
 import { useState, useEffect, useMemo } from "react";
-
-import NewsList from "../../components/NewsList/NewsList";
-import NewsFilter from "../../components/BtnGitHubSignIn/NewsFilter/NewsFilter";
-import Loader from "../../components/UI/Loader/Loader";
+import NewsList from "../NewsList/NewsList";
+import NewsFilter from "../NewsFilter/NewsFilter";
+import Loader from "../UI/Loader/Loader";
+import BasicPagination from "../UI/pagination/Pagination";
+import Error from "../../pages/Error/ErrorPage";
 import { getPageCount } from "../../utils/pages";
-import cl from "./News.module.css";
-import BasicPagination from "../../components/UI/pagination/Pagination";
-import Error from "../Error/ErrorPage";
-import Ticker from "../../components/Ticker/Ticker";
+import cl from "./NewsBlock.module.css";
 
-const News = () => {
+const NewsBlock = () => {
   const [news, setNews] = useState("");
-  const [cryptoInfo, setCryptoInfo] = useState("");
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const [isNewsLoading, setIsNewsLoading] = useState(false);
-
-  const getCryptoInfo = async () => {
-    const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false
-      `
-    );
-    const data = await response.json();
-    console.log(data);
-    setCryptoInfo(data);
-  };
 
   const getNews = async () => {
     const response = await fetch(
@@ -38,11 +25,11 @@ const News = () => {
     const totalCount = 1000;
     setTotalPages(getPageCount(totalCount, limit));
     setIsNewsLoading(false);
+    console.log("ready");
   };
 
   useEffect(() => {
     setIsNewsLoading(true);
-    getCryptoInfo();
     getNews();
     window.scroll(0, 0);
   }, [page]);
@@ -59,16 +46,15 @@ const News = () => {
   const sortedAndSearchedNews = useMemo(() => {
     if (sortedNews) {
       return sortedNews.filter((news) =>
-        news.headline.main.toLowerCase().includes(filter.query)
+        news.snippet.toLowerCase().includes(filter.query)
       );
     }
     return news;
   }, [filter.query, sortedNews]);
 
-  if (news) {
+  if (sortedAndSearchedNews) {
     return (
-      <div className={cl.containerCommon}>
-        <Ticker cryptoInfo={cryptoInfo} />
+      <>
         <NewsFilter filter={filter} setFilter={setFilter} />
         <div className={cl.container}>
           {isNewsLoading ? (
@@ -77,15 +63,13 @@ const News = () => {
             <NewsList news={sortedAndSearchedNews} />
           )}
         </div>
-
         <div className={cl.pageBtnContainer}>
           <BasicPagination setPage={setPage} totalPages={totalPages} />
         </div>
-      </div>
+      </>
     );
-  } else {
-    return <Error />;
   }
+  return <Error />;
 };
 
-export default News;
+export default NewsBlock;

@@ -12,6 +12,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
     "@mui/styled-engine-sc": "^5.11.0",
+    "@supabase/supabase-js": "^2.8.0",
     "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^5.0.0",
     "mdb-react-ui-kit": "^5.1.0",
