@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/github-API/static/css/main.b9a10eca.css",
-    "main.js": "/github-API/static/js/main.36f50b19.js",
+    "main.js": "/github-API/static/js/main.abf2e976.js",
     "static/media/fa-solid-900.ttf": "/github-API/static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
     "static/media/fa-brands-400.ttf": "/github-API/static/media/fa-brands-400.13e40630e5866f777de8.ttf",
     "static/media/fa-solid-900.woff2": "/github-API/static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
@@ -15,10 +15,10 @@
     "static/media/github-icon.svg": "/github-API/static/media/github-icon.04be58c17b3d5e9744424d414240dd85.svg",
     "index.html": "/github-API/index.html",
     "main.b9a10eca.css.map": "/github-API/static/css/main.b9a10eca.css.map",
-    "main.36f50b19.js.map": "/github-API/static/js/main.36f50b19.js.map"
+    "main.abf2e976.js.map": "/github-API/static/js/main.abf2e976.js.map"
   },
   "entrypoints": [
     "static/css/main.b9a10eca.css",
-    "static/js/main.36f50b19.js"
+    "static/js/main.abf2e976.js"
   ]
 }
