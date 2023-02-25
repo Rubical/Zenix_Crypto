@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "./client";
 
 function App() {
-  const [isAuth, setIsAuth] = useState("");
+  const [isAuth, setIsAuth] = useState({ user: null });
+  const [anonAuth, setAnonAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
     const { user, session, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "https://rubical.github.io/github-API/",
+        redirectTo: "http://localhost:3000/github-API/",
         scopes: "repo user project",
       },
     });
@@ -49,6 +50,8 @@ function App() {
         isLoading,
         signInWithGitHub,
         signout,
+        anonAuth,
+        setAnonAuth,
       }}
     >
       <Router>

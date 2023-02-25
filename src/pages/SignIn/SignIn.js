@@ -38,13 +38,13 @@ const theme = createTheme();
 
 export default function SignIn() {
   const nav = useNavigate();
-  const { isAuth, setIsAuth } = React.useContext(AuthContext);
+  const { setAnonAuth } = React.useContext(AuthContext);
 
   const login = (e) => {
     e.preventDefault();
-    setIsAuth(true);
     localStorage.setItem("auth", true);
     nav("/github-API");
+    setAnonAuth(true);
   };
 
   return (

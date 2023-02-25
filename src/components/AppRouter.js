@@ -7,12 +7,14 @@ import NavBarPrivate from "./UI/NavBar/NavBarPrivate";
 import NavBarPublic from "./UI/NavBar/NavBarPublic";
 
 const AppRouter = () => {
-  const { isAuth, isLoading } = useContext(AuthContext);
+  const { isAuth, isLoading, anonAuth } = useContext(AuthContext);
 
   if (isLoading) {
     return <Loader />;
   }
-  return isAuth ? (
+
+  console.log(isAuth);
+  return localStorage.getItem("auth") || isAuth?.user ? (
     <>
       <NavBarPrivate />
       <Routes>

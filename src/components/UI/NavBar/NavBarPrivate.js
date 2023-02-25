@@ -22,7 +22,17 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const { isAuth, setIsAuth, signout } = useContext(AuthContext);
+  const { isAuth, setIsAuth, signout, setAnonAuth } = useContext(AuthContext);
+
+  const logout = () => {
+    if (localStorage.getItem("auth")) {
+      localStorage.removeItem("auth");
+      setAnonAuth(false);
+    }
+    if (isAuth) {
+      signout();
+    }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -178,7 +188,7 @@ function NavBar() {
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();
-                  signout();
+                  logout();
                 }}
               >
                 <NavLink to="/github-API">
