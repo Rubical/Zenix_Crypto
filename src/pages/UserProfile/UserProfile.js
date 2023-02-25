@@ -17,16 +17,16 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { AuthContext } from "../../context/context";
+import { checkIsAuthItemExist } from "../../utils/checkIsAuthItemExist";
 
 export default function Profile() {
   const { isAuth } = useContext(AuthContext);
+
   const { created_at, email, phone, user_metadata } = isAuth.user;
   const { avatar_url, full_name, user_name } = user_metadata;
+
   console.log(isAuth);
 
-  const checkIsAuthItemExist = (authItem, defaultItem) => {
-    return isAuth ? authItem : defaultItem;
-  };
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5">
@@ -94,7 +94,7 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      {checkIsAuthItemExist(email)}
+                      {checkIsAuthItemExist(email, "email@email.ru")}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -130,7 +130,7 @@ export default function Profile() {
                     <MDBCardText className="mb-4">
                       <span className="text-primary font-italic me-1">
                         assigment
-                      </span>{" "}
+                      </span>
                       Project Status
                     </MDBCardText>
                     <MDBCardText

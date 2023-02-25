@@ -23,6 +23,7 @@ const AppRouter = () => {
             element={<route.element />}
           />
         ))}
+        <Route path="/*" element={<Navigate to="/error" />} />
       </Routes>
     </>
   ) : (
@@ -37,7 +38,7 @@ const AppRouter = () => {
           />
         ))}
         <Route path="/*" element={<Navigate to="/error" />} />
-      </Routes>{" "}
+      </Routes>
     </>
   );
 };

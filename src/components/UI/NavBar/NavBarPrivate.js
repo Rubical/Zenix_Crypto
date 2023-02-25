@@ -16,20 +16,13 @@ import AdbIcon from "@mui/icons-material/Adb";
 import cl from "./NavBarPrivate.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/context";
+import { checkIsAuthItemExist } from "../../../utils/checkIsAuthItemExist";
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const { isAuth, setIsAuth, signout } = useContext(AuthContext);
-
-  const logout = () => {
-    if (isAuth) {
-      signout();
-    } else {
-      setIsAuth(false);
-    }
-  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -154,11 +147,10 @@ function NavBar() {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src={
-                    isAuth
-                      ? isAuth.user.user_metadata.avatar_url
-                      : "/static/images/avatar/2.jpg"
-                  }
+                  src={checkIsAuthItemExist(
+                    isAuth?.user?.user_metadata?.avatar_url,
+                    "/static/images/avatar/2.jpg"
+                  )}
                 />
               </IconButton>
             </Tooltip>
@@ -186,12 +178,10 @@ function NavBar() {
               <MenuItem
                 onClick={() => {
                   handleCloseUserMenu();
-                  logout();
+                  signout();
                 }}
               >
-                <NavLink to="/signin">
-                  <Typography textAlign="center">Logout</Typography>
-                </NavLink>
+                <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>
           </Box>

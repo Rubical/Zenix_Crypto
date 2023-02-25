@@ -25,7 +25,6 @@ const NewsBlock = () => {
     const totalCount = 1000;
     setTotalPages(getPageCount(totalCount, limit));
     setIsNewsLoading(false);
-    console.log("ready");
   };
 
   useEffect(() => {
@@ -69,7 +68,6 @@ const NewsBlock = () => {
       </>
     );
   }
-  return <Error />;
 };
 
 export default NewsBlock;

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import "./reset.css";
 import { AuthContext } from "./context/context";
@@ -19,14 +19,19 @@ function App() {
 
   async function checkUser() {
     const { data, error } = await supabase.auth.updateUser({});
-
     setIsAuth(data);
   }
 
   async function signInWithGitHub() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
+      options: {
+        redirectTo: "https://rubical.github.io/github-API/",
+      },
     });
+    if (error) {
+      alert(error.message);
+    }
   }
 
   async function signout() {

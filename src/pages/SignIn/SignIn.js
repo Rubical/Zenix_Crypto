@@ -37,16 +37,6 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const nav = useNavigate();
-  const { isAuth, setIsAuth } = React.useContext(AuthContext);
-
-  const login = (e) => {
-    e.preventDefault();
-    setIsAuth(true);
-    localStorage.setItem("auth", true);
-    nav("/github-API");
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -62,45 +52,9 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography sx={{ marginBottom: "50px" }} component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={login} noValidate sx={{ mt: 1 }}>
-            <TextField
-              sx={{ color: "red" }}
-              margin="normal"
-              fullWidth
-              id="email"
-              label="Just click sign in with GitHub (it works)"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Or click sign in button, i didn't get into backend"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs></Grid>
-            </Grid>
-          </Box>
           <BtnGitHub text={"Sign in with GitHub"} />
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
