@@ -44,7 +44,7 @@ export default function SignIn() {
     e.preventDefault();
     setIsAuth(true);
     localStorage.setItem("auth", true);
-    nav("/news");
+    nav("/github-API");
   };
 
   return (
@@ -80,7 +80,7 @@ export default function SignIn() {
               margin="normal"
               fullWidth
               name="password"
-              label="Or click sign in button, i didn't get into backend"
+              label="Or click blue sign in button to test app"
               type="password"
               id="password"
               autoComplete="current-password"

@@ -181,7 +181,9 @@ function NavBar() {
                   signout();
                 }}
               >
-                <Typography textAlign="center">Logout</Typography>
+                <NavLink to="/github-API">
+                  <Typography textAlign="center">Logout</Typography>
+                </NavLink>
               </MenuItem>
             </Menu>
           </Box>

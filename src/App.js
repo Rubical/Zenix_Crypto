@@ -23,12 +23,14 @@ function App() {
   }
 
   async function signInWithGitHub() {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { user, session, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
         redirectTo: "https://rubical.github.io/github-API/",
+        scopes: "repo user project",
       },
     });
+
     if (error) {
       alert(error.message);
     }
@@ -41,7 +43,13 @@ function App() {
 
   return (
     <AuthContext.Provider
-      value={{ isAuth, setIsAuth, isLoading, signInWithGitHub, signout }}
+      value={{
+        isAuth,
+        setIsAuth,
+        isLoading,
+        signInWithGitHub,
+        signout,
+      }}
     >
       <Router>
         <AppRouter />
