@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,9 +13,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "../../template/link/style.css";
 import BtnGitHub from "../../components/BtnGitHubSignIn/BtnGitHubSignIn";
-import { AuthContext } from "../../context/context";
+import { useDispatch } from "react-redux";
+import { logInAnonym } from "./../../redux/anonAuthSlice";
 
 function Copyright(props) {
   return (
@@ -37,14 +37,14 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const nav = useNavigate();
-  const { setAnonAuth } = React.useContext(AuthContext);
 
   const login = (e) => {
     e.preventDefault();
     localStorage.setItem("auth", true);
+    dispatch(logInAnonym());
     nav("/github-API");
-    setAnonAuth(true);
   };
 
   return (

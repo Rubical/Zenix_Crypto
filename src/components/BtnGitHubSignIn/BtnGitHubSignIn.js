@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/context";
 import cl from "./BtnGitHubSignIn.module.css";
 import gitHubIcon from "./gitHub-black.svg";
 
-const BtnGitHub = ({ text, login }) => {
+const BtnGitHub = ({ text }) => {
   const { signInWithGitHub } = useContext(AuthContext);
 
   return (

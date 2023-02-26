@@ -5,20 +5,23 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import iconShare from "./icon-share.png";
 import cl from "./ShareInSocials.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { modalOpen, modalClose } from "../../redux/modalSlice";
 
 export default function ShareInSocials({ description }) {
-  const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState("");
+  const dispatch = useDispatch();
+
+  const modal = useSelector((state) => state.modal);
 
   const url = window.location.href;
 
   const handleClickOpen = () => {
-    setOpen(true);
+    dispatch(modalOpen());
   };
 
   const handleClose = (event, reason) => {
     if (reason !== "backdropClick") {
-      setOpen(false);
+      dispatch(modalClose());
     }
   };
 
@@ -27,7 +30,7 @@ export default function ShareInSocials({ description }) {
       <Button className={cl.iconShareBtn} onClick={handleClickOpen}>
         <img className={cl.iconShareBtnImg} src={iconShare}></img>
       </Button>
-      <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
+      <Dialog disableEscapeKeyDown open={modal} onClose={handleClose}>
         <DialogTitle>Share in your socials</DialogTitle>
         <div className="btn-group dropright">
           <div className="dropdown-menu"></div>

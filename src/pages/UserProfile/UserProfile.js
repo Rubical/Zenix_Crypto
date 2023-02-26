@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import {
   MDBCol,
   MDBContainer,
@@ -13,13 +14,16 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
-import { AuthContext } from "../../context/context";
 import { checkIsAuthItemExist } from "../../utils/checkIsAuthItemExist";
+import getPrettyDate from "./../../utils/getPrettyDate";
 
 export default function Profile() {
-  const { isAuth } = useContext(AuthContext);
+  const isAuth = useSelector((state) => state.githubAuth.user);
 
-  console.log(isAuth);
+  const date = checkIsAuthItemExist(
+    isAuth?.user?.created_at,
+    "2000-01-01T00:00:00.584987Z"
+  );
 
   return (
     <section style={{ backgroundColor: "#eee", minHeight: "90vh" }}>
@@ -102,7 +106,7 @@ export default function Profile() {
                     <MDBCardText className="text-muted">
                       {checkIsAuthItemExist(
                         isAuth?.user?.email,
-                        "email@email.ru"
+                        "not specified"
                       )}
                     </MDBCardText>
                   </MDBCol>
@@ -114,7 +118,10 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      {checkIsAuthItemExist(isAuth?.user?.phone, "")}
+                      {checkIsAuthItemExist(
+                        isAuth?.user?.phone,
+                        "not specified"
+                      )}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -125,7 +132,7 @@ export default function Profile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      {checkIsAuthItemExist(isAuth?.user?.created_at, "")}
+                      {getPrettyDate(new Date(date))}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>

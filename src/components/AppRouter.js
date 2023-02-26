@@ -1,19 +1,12 @@
-import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AuthContext } from "../context/context";
 import { privateRoutes, publicRoutes } from "../router/routes";
-import Loader from "./UI/Loader/Loader";
 import NavBarPrivate from "./UI/NavBar/NavBarPrivate";
 import NavBarPublic from "./UI/NavBar/NavBarPublic";
+import { useSelector } from "react-redux";
 
 const AppRouter = () => {
-  const { isAuth, isLoading, anonAuth } = useContext(AuthContext);
+  const isAuth = useSelector((state) => state.githubAuth.user);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  console.log(isAuth);
   return localStorage.getItem("auth") || isAuth?.user ? (
     <>
       <NavBarPrivate />

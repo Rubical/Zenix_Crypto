@@ -12,6 +12,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
     "@mui/styled-engine-sc": "^5.11.0",
+    "@reduxjs/toolkit": "^1.9.3",
     "@supabase/supabase-js": "^2.8.0",
     "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^5.0.0",
@@ -19,8 +20,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-double-marquee": "^1.1.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
@@ -43,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
   }
 }

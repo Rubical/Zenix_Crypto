@@ -6,6 +6,8 @@ import BasicPagination from "../UI/pagination/Pagination";
 import Error from "../../pages/Error/ErrorPage";
 import { getPageCount } from "../../utils/pages";
 import cl from "./NewsBlock.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { loadingStart, loadingStop } from "./../../redux/loadingSlice";
 
 const NewsBlock = () => {
   const [news, setNews] = useState("");
@@ -13,7 +15,9 @@ const NewsBlock = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  const [isNewsLoading, setIsNewsLoading] = useState(false);
+
+  const isLoading = useSelector((state) => state.loading);
+  const dispatch = useDispatch();
 
   const getNews = async () => {
     const response = await fetch(
@@ -24,11 +28,11 @@ const NewsBlock = () => {
     setNews(newsReady);
     const totalCount = 1000;
     setTotalPages(getPageCount(totalCount, limit));
-    setIsNewsLoading(false);
+    dispatch(loadingStop());
   };
 
   useEffect(() => {
-    setIsNewsLoading(true);
+    dispatch(loadingStart());
     getNews();
     window.scroll(0, 0);
   }, [page]);
@@ -56,11 +60,7 @@ const NewsBlock = () => {
       <>
         <NewsFilter filter={filter} setFilter={setFilter} />
         <div className={cl.container}>
-          {isNewsLoading ? (
-            <Loader />
-          ) : (
-            <NewsList news={sortedAndSearchedNews} />
-          )}
+          {isLoading ? <Loader /> : <NewsList news={sortedAndSearchedNews} />}
         </div>
         <div className={cl.pageBtnContainer}>
           <BasicPagination setPage={setPage} totalPages={totalPages} />

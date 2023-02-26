@@ -1,12 +1,26 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import getPrettyDate from "../../utils/getPrettyDate";
 import BtnGitHubSignIn from "./../BtnGitHubSignIn/BtnGitHubSignIn";
 import deleteBtn from "./close-btn.png";
 import cl from "./UserInfoCard.module.css";
 import ShareInSocials from "../ShareInSocials/ShareInSocials";
-import DialogSelect from "../ShareInSocials/ShareInSocials";
+import { clearSearchName } from "../../redux/searchNameSlice";
+import { clearUserInfo } from "../../redux/userInfoSlice";
 
-const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
+const UserInfoCard = () => {
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userInfo);
+
+  const clearInput = () => {
+    dispatch(clearSearchName());
+  };
+
+  const deleteUserCard = () => {
+    dispatch(clearUserInfo());
+  };
+
   useEffect(() => {
     clearInput();
   }, [userInfo]);
@@ -56,11 +70,6 @@ const UserInfoCard = ({ userInfo, deleteUserCard, clearInput }) => {
           );
         })}
         <div className={cl.flexRow}>
-          <BtnGitHubSignIn
-            className={cl.btnGitHub}
-            text={"Check profile"}
-            link={html_url}
-          />
           <ShareInSocials description={"Hello from Rubical!"} />
         </div>
       </div>

@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Marquee from "react-double-marquee";
 import CryptoCard from "../CryptoCard/CryptoCard";
+import { setCryptoInfo } from "./../../redux/cryptoInfoSlice";
 
 const Ticker = () => {
-  const [cryptoInfo, setCryptoInfo] = useState("");
+  const cryptoInfo = useSelector((state) => state.cryptoInfo);
+  const dispatch = useDispatch();
 
   const getCryptoInfo = async () => {
     const response = await fetch(
@@ -11,7 +14,7 @@ const Ticker = () => {
       `
     );
     const data = await response.json();
-    setCryptoInfo(data);
+    dispatch(setCryptoInfo(data));
   };
 
   useEffect(() => {

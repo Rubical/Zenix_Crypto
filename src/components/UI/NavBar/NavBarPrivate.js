@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,17 +17,22 @@ import cl from "./NavBarPrivate.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/context";
 import { checkIsAuthItemExist } from "../../../utils/checkIsAuthItemExist";
+import { useSelector, useDispatch } from "react-redux";
+import { logOutAnonym } from "./../../../redux/anonAuthSlice";
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const { isAuth, setIsAuth, signout, setAnonAuth } = useContext(AuthContext);
+  const isAuth = useSelector((state) => state.githubAuth.user);
+  const anonAuth = useSelector((state) => state.anonAuth);
+  const dispatch = useDispatch();
 
+  const { signout } = useContext(AuthContext);
   const logout = () => {
     if (localStorage.getItem("auth")) {
+      dispatch(logOutAnonym());
       localStorage.removeItem("auth");
-      setAnonAuth(false);
     }
     if (isAuth) {
       signout();
