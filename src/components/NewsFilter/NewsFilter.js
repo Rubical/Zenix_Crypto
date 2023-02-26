@@ -1,19 +1,22 @@
 import BasicSelect from "../UI/select/Select";
 import TextInput from "../UI/input/TextInput";
 import cl from "./NewsFilter.module.css";
+import { setSortType, setSearchValue } from "../../redux/filterSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const NewsFilter = ({ filter, setFilter }) => {
+const NewsFilter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector((state) => state.filter);
+
   return (
     <div className={cl.sortContainer}>
       <TextInput
         value={filter.query}
-        onChange={(e) => setFilter({ ...filter, query: e.target.value })}
+        onChange={(e) => dispatch(setSearchValue(e.target.value))}
       />
       <BasicSelect
         value={filter.sort}
-        onChange={(selectedSort) =>
-          setFilter({ ...filter, sort: selectedSort })
-        }
+        onChange={(selectedSort) => dispatch(setSortType(selectedSort))}
         defaultValue="Sort"
         options={[
           { value: "snippet", name: "By title" },

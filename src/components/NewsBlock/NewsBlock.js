@@ -3,31 +3,31 @@ import NewsList from "../NewsList/NewsList";
 import NewsFilter from "../NewsFilter/NewsFilter";
 import Loader from "../UI/Loader/Loader";
 import BasicPagination from "../UI/pagination/Pagination";
-import Error from "../../pages/Error/ErrorPage";
 import { getPageCount } from "../../utils/pages";
 import cl from "./NewsBlock.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { loadingStart, loadingStop } from "./../../redux/loadingSlice";
+import { setNews } from "../../redux/newsSlice";
+import { setSortType, setSearchValue } from "../../redux/filterSlice";
+import { setTotalPages } from "../../redux/paginationSlice";
 
 const NewsBlock = () => {
-  const [news, setNews] = useState("");
-  const [filter, setFilter] = useState({ sort: "", query: "" });
-  const [totalPages, setTotalPages] = useState(0);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-
+  const news = useSelector((state) => state.news);
+  const filter = useSelector((state) => state.filter);
+  const pageCount = useSelector((state) => state.pageCount);
   const isLoading = useSelector((state) => state.loading);
+
   const dispatch = useDispatch();
 
   const getNews = async () => {
     const response = await fetch(
-      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=crypto&page=${page}&api-key=j4ZiODq9JJvT86CJYwEdidgi0HDPUMRg`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=crypto&page=${pageCount}&api-key=j4ZiODq9JJvT86CJYwEdidgi0HDPUMRg`
     );
     const data = await response.json();
     const newsReady = data.response.docs.slice(0, 9);
-    setNews(newsReady);
+    dispatch(setNews(newsReady));
     const totalCount = 1000;
-    setTotalPages(getPageCount(totalCount, limit));
+    dispatch(setTotalPages(getPageCount(totalCount, 10)));
     dispatch(loadingStop());
   };
 
@@ -35,7 +35,7 @@ const NewsBlock = () => {
     dispatch(loadingStart());
     getNews();
     window.scroll(0, 0);
-  }, [page]);
+  }, [pageCount]);
 
   const sortedNews = useMemo(() => {
     if (filter.sort) {
@@ -58,12 +58,12 @@ const NewsBlock = () => {
   if (sortedAndSearchedNews) {
     return (
       <>
-        <NewsFilter filter={filter} setFilter={setFilter} />
+        <NewsFilter />
         <div className={cl.container}>
           {isLoading ? <Loader /> : <NewsList news={sortedAndSearchedNews} />}
         </div>
         <div className={cl.pageBtnContainer}>
-          <BasicPagination setPage={setPage} totalPages={totalPages} />
+          <BasicPagination />
         </div>
       </>
     );

@@ -6,6 +6,10 @@ import cryptoInfoReducer from "./cryptoInfoSlice";
 import modalReducer from "./modalSlice";
 import searchNameReducer from "./searchNameSlice";
 import userInfoReducer from "./userInfoSlice";
+import newsReducer from "./newsSlice";
+import filterReducer from "./filterSlice";
+import paginationReducer from "./paginationSlice";
+import pageCountReducer from "./pageCountSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +20,9 @@ export const store = configureStore({
     modal: modalReducer,
     searchName: searchNameReducer,
     userInfo: userInfoReducer,
+    news: newsReducer,
+    filter: filterReducer,
+    pagination: paginationReducer,
+    pageCount: pageCountReducer,
   },
 });
