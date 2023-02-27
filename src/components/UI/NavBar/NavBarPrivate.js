@@ -19,6 +19,7 @@ import { AuthContext } from "../../../context/context";
 import { checkIsAuthItemExist } from "../../../utils/checkIsAuthItemExist";
 import { useSelector, useDispatch } from "react-redux";
 import { logOutAnonym } from "./../../../redux/anonAuthSlice";
+import { clearUserInfo } from "../../../redux/userInfoSlice";
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -55,7 +56,12 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      onClick={() => {
+        dispatch(clearUserInfo());
+      }}
+      position="static"
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

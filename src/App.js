@@ -31,7 +31,7 @@ function App() {
     const { user, session, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "https://rubical.github.io/github-API/",
+        redirectTo: "http://localhost:3000/github-API/",
         scopes: "repo user project",
       },
     });

@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
 import getPrettyDate from "../../utils/getPrettyDate";
-import BtnGitHubSignIn from "./../BtnGitHubSignIn/BtnGitHubSignIn";
-import deleteBtn from "./close-btn.png";
-import cl from "./UserInfoCard.module.css";
 import ShareInSocials from "../ShareInSocials/ShareInSocials";
 import { clearSearchName } from "../../redux/searchNameSlice";
 import { clearUserInfo } from "../../redux/userInfoSlice";
@@ -31,7 +33,6 @@ const UserInfoCard = () => {
       avatar_url,
       created_at,
       email,
-      html_url,
       location,
       followers,
       following,
@@ -56,23 +57,55 @@ const UserInfoCard = () => {
     }
 
     return (
-      <div id="box" className={cl.container + " " + cl.gradientBorder}>
-        <button type="button" className={cl.deleteBtn} onClick={deleteUserCard}>
-          <img src={deleteBtn}></img>
-        </button>
-        <img className={cl.userImg} src={avatar_url}></img>
-        <hr />
-        {users.map((user) => {
-          return (
-            <p className={cl.userInfo} key={Object.keys(user)}>
-              {Object.keys(user) + ": " + Object.values(user)}
-            </p>
-          );
-        })}
-        <div className={cl.flexRow}>
+      <Card
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 330,
+          boxShadow: 24,
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <CloseIcon
+          sx={{
+            position: "absolute",
+            right: "15px",
+            top: "15px",
+            width: "30px",
+            height: "30px",
+            cursor: "pointer",
+          }}
+          onClick={deleteUserCard}
+        ></CloseIcon>
+
+        <Box
+          component="img"
+          src={avatar_url}
+          alt="image"
+          sx={{
+            width: "330px",
+            justifySelf: "center",
+            marginBottom: "20px",
+          }}
+        />
+        <CardContent>
+          {users.map((user) => {
+            return (
+              <div key={Object.keys(user)}>
+                <Typography sx={{ fontSize: "17px" }} variant="h6">
+                  {Object.keys(user) + ": " + Object.values(user)}
+                </Typography>
+                <hr style={{ margin: "5px" }} />
+              </div>
+            );
+          })}
+        </CardContent>
+        <CardActions disableSpacing>
           <ShareInSocials description={"Hello from Rubical!"} />
-        </div>
-      </div>
+        </CardActions>
+      </Card>
     );
   }
 };
