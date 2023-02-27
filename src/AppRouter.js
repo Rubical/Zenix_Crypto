@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { privateRoutes, publicRoutes } from "../router/routes";
-import NavBarPrivate from "./UI/NavBar/NavBarPrivate";
-import NavBarPublic from "./UI/NavBar/NavBarPublic";
+import { privateRoutes, publicRoutes } from "./router/routes";
+import NavBarPrivate from "./components/UI/NavBar/NavBarPrivate";
+import NavBarPublic from "./components/UI/NavBar/NavBarPublic";
 import { useSelector } from "react-redux";
 
 const AppRouter = () => {

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, useNavigate } from "react-router-dom";
-import AppRouter from "./components/AppRouter";
+import AppRouter from "./AppRouter";
 import "./reset.css";
 import { AuthContext } from "./context/context";
 import { useEffect } from "react";
