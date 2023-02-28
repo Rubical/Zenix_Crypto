@@ -1,24 +1,23 @@
 {
   "files": {
-    "main.css": "/github-API/static/css/main.85bf8233.css",
-    "main.js": "/github-API/static/js/main.dd5199ff.js",
+    "main.css": "/github-API/static/css/main.0b9bb6dc.css",
+    "main.js": "/github-API/static/js/main.8d8683ee.js",
     "static/media/fa-solid-900.ttf": "/github-API/static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
     "static/media/fa-brands-400.ttf": "/github-API/static/media/fa-brands-400.13e40630e5866f777de8.ttf",
     "static/media/fa-solid-900.woff2": "/github-API/static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
     "static/media/fa-brands-400.woff2": "/github-API/static/media/fa-brands-400.7be2266f1be21c44ecd4.woff2",
     "static/media/fa-regular-400.ttf": "/github-API/static/media/fa-regular-400.146404900f7550a9719d.ttf",
     "static/media/fa-regular-400.woff2": "/github-API/static/media/fa-regular-400.8bedd7cfa43a6c358cdd.woff2",
-    "static/media/icon-share.png": "/github-API/static/media/icon-share.828f1241a7edb75f8b3e.png",
     "static/media/fa-v4compatibility.ttf": "/github-API/static/media/fa-v4compatibility.6c0a7b774ffa1cf0a059.ttf",
     "static/media/fa-v4compatibility.woff2": "/github-API/static/media/fa-v4compatibility.497d535001197a9c5b38.woff2",
     "static/media/gitHub-black.svg": "/github-API/static/media/gitHub-black.ee1ebfe18c9e5961569b35142872472d.svg",
     "static/media/github-icon.svg": "/github-API/static/media/github-icon.04be58c17b3d5e9744424d414240dd85.svg",
     "index.html": "/github-API/index.html",
-    "main.85bf8233.css.map": "/github-API/static/css/main.85bf8233.css.map",
-    "main.dd5199ff.js.map": "/github-API/static/js/main.dd5199ff.js.map"
+    "main.0b9bb6dc.css.map": "/github-API/static/css/main.0b9bb6dc.css.map",
+    "main.8d8683ee.js.map": "/github-API/static/js/main.8d8683ee.js.map"
   },
   "entrypoints": [
-    "static/css/main.85bf8233.css",
-    "static/js/main.dd5199ff.js"
+    "static/css/main.0b9bb6dc.css",
+    "static/js/main.8d8683ee.js"
   ]
 }
