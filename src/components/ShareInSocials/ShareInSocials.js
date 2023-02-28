@@ -43,7 +43,9 @@ export default function ShareInSocials({ description }) {
             href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
             target="_blank"
           >
-            <FacebookIcon sx={{ width: "40px", height: "40px" }}></FacebookIcon>
+            <FacebookIcon
+              sx={{ width: "40px", height: "40px", color: "#3b5998" }}
+            ></FacebookIcon>
           </a>
           <a
             href={`https://twitter.com/intent/tweet?url=${url}&text=${encodeURI(

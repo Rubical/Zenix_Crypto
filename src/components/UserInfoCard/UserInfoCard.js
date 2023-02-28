@@ -10,6 +10,7 @@ import getPrettyDate from "../../utils/getPrettyDate";
 import ShareInSocials from "../ShareInSocials/ShareInSocials";
 import { clearSearchName } from "../../redux/searchNameSlice";
 import { clearUserInfo } from "../../redux/userInfoSlice";
+import { enableBodyScroll, disableBodyScroll } from "./../../utils/bodyScroll";
 
 const UserInfoCard = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const UserInfoCard = () => {
   }, [userInfo]);
 
   if (userInfo) {
+    disableBodyScroll();
     const {
       login,
       avatar_url,
@@ -77,7 +79,10 @@ const UserInfoCard = () => {
             height: "30px",
             cursor: "pointer",
           }}
-          onClick={deleteUserCard}
+          onClick={() => {
+            deleteUserCard();
+            enableBodyScroll();
+          }}
         ></CloseIcon>
 
         <Box

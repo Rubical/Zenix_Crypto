@@ -20,6 +20,7 @@ import { checkIsAuthItemExist } from "../../../utils/checkIsAuthItemExist";
 import { useSelector, useDispatch } from "react-redux";
 import { logOutAnonym } from "./../../../redux/anonAuthSlice";
 import { clearUserInfo } from "../../../redux/userInfoSlice";
+import { enableBodyScroll } from "../../../utils/bodyScroll";
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -59,6 +60,7 @@ function NavBar() {
     <AppBar
       onClick={() => {
         dispatch(clearUserInfo());
+        enableBodyScroll();
       }}
       position="static"
     >
