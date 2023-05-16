@@ -11,7 +11,7 @@ export const privateRoutes = [
   },
 
   {
-    path: "/github-API",
+    path: "/Zenix_Crypto",
     element: Main,
   },
   {
@@ -27,7 +27,7 @@ export const privateRoutes = [
 
 export const publicRoutes = [
   {
-    path: "/github-API",
+    path: "/Zenix_Crypto",
     element: Main,
   },
   {
