@@ -32,7 +32,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/github-API"
+            href="/Zenix_Crypto"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -75,7 +75,7 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <NavLink to="github-API">
+              <NavLink to="Zenix_Crypto">
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
@@ -102,7 +102,7 @@ function ResponsiveAppBar() {
             Rubical
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <NavLink to="github-API">
+            <NavLink to="Zenix_Crypto">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}

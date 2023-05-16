@@ -31,7 +31,7 @@ function App() {
     const { user, session, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "https://rubical.github.io/github-API/",
+        redirectTo: "https://rubical.github.io/Zenix_Crypto/",
         scopes: "repo user project",
       },
     });

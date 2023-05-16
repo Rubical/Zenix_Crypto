@@ -72,7 +72,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/github-API"
+            href="/Zenix_Crypto"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -115,7 +115,7 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <NavLink to="/github-API">
+              <NavLink to="/Zenix_Crypto">
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
@@ -151,7 +151,7 @@ function NavBar() {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              <NavLink className={cl.link} to="/github-API">
+              <NavLink className={cl.link} to="/Zenix_Crypto">
                 Home
               </NavLink>
             </Button>
@@ -204,7 +204,7 @@ function NavBar() {
                   logout();
                 }}
               >
-                <NavLink to="/github-API">
+                <NavLink to="/Zenix_Crypto">
                   <Typography textAlign="center">Logout</Typography>
                 </NavLink>
               </MenuItem>

@@ -44,7 +44,7 @@ export default function SignIn() {
     e.preventDefault();
     localStorage.setItem("auth", true);
     dispatch(logInAnonym());
-    nav("/github-API");
+    nav("/Zenix_Crypto");
   };
 
   return (
