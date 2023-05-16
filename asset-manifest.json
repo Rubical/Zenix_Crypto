@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Zenix_Crypto/static/css/main.9c09b8f7.css",
-    "main.js": "/Zenix_Crypto/static/js/main.07e3e412.js",
+    "main.js": "/Zenix_Crypto/static/js/main.c6fa7ba5.js",
     "static/media/fa-solid-900.ttf": "/Zenix_Crypto/static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
     "static/media/fa-brands-400.ttf": "/Zenix_Crypto/static/media/fa-brands-400.13e40630e5866f777de8.ttf",
     "static/media/fa-solid-900.woff2": "/Zenix_Crypto/static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
@@ -14,10 +14,10 @@
     "static/media/github-icon.svg": "/Zenix_Crypto/static/media/github-icon.04be58c17b3d5e9744424d414240dd85.svg",
     "index.html": "/Zenix_Crypto/index.html",
     "main.9c09b8f7.css.map": "/Zenix_Crypto/static/css/main.9c09b8f7.css.map",
-    "main.07e3e412.js.map": "/Zenix_Crypto/static/js/main.07e3e412.js.map"
+    "main.c6fa7ba5.js.map": "/Zenix_Crypto/static/js/main.c6fa7ba5.js.map"
   },
   "entrypoints": [
     "static/css/main.9c09b8f7.css",
-    "static/js/main.07e3e412.js"
+    "static/js/main.c6fa7ba5.js"
   ]
 }
